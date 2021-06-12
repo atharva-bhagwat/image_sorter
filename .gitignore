@@ -1,6 +1,9 @@
 # Project files
 highlevel_design/
 
+# UI Files
+*.ui
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
