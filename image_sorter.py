@@ -14,6 +14,12 @@ from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath('.'), relative_path)
+
+
 class UiFirstWindow(object):
     def __init__(self):
         self.folder_to_process = None
@@ -21,6 +27,7 @@ class UiFirstWindow(object):
         self.subfolder_list = []
 
     def reset(self):
+        self.folder_path_label.setText('...')
         self.copy_radio.setAutoExclusive(False)
         self.cut_radio.setAutoExclusive(False)
         self.copy_radio.setChecked(False)
@@ -42,6 +49,7 @@ class UiFirstWindow(object):
 
     def set_folder(self):
         self.folder_to_process = QtWidgets.QFileDialog.getExistingDirectory()
+        self.folder_path_label.setText(self.folder_to_process)
 
     def set_operation(self, button):
         if button.objectName() == 'copy_radio' and button.isChecked():
@@ -98,7 +106,7 @@ class UiFirstWindow(object):
         font.setPointSize(12)
         first_page.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join("assets", "icon.png")),
+        icon.addPixmap(QtGui.QPixmap(resource_path("./assets/icon.png")),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         first_page.setWindowIcon(icon)
         first_page.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -154,15 +162,15 @@ class UiFirstWindow(object):
         self.cut_radio.setObjectName("cut_radio")
         self.choose_opr_layout.addWidget(self.cut_radio, 1, 2, 1, 1)
         self.master_layout.setLayout(
-            2, QtWidgets.QFormLayout.FieldRole, self.choose_opr_layout)
+            3, QtWidgets.QFormLayout.FieldRole, self.choose_opr_layout)
         spacerItem = QtWidgets.QSpacerItem(
             20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.master_layout.setItem(
-            3, QtWidgets.QFormLayout.FieldRole, spacerItem)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSizeConstraint(
+            4, QtWidgets.QFormLayout.FieldRole, spacerItem)
+        self.subfolder_layout_h = QtWidgets.QHBoxLayout()
+        self.subfolder_layout_h.setSizeConstraint(
             QtWidgets.QLayout.SetDefaultConstraint)
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.subfolder_layout_h.setObjectName("subfolder_layout_h")
         self.subfolder_name = QtWidgets.QLineEdit(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -172,7 +180,7 @@ class UiFirstWindow(object):
             self.subfolder_name.sizePolicy().hasHeightForWidth())
         self.subfolder_name.setSizePolicy(sizePolicy)
         self.subfolder_name.setObjectName("subfolder_name")
-        self.horizontalLayout.addWidget(self.subfolder_name)
+        self.subfolder_layout_h.addWidget(self.subfolder_name)
         self.add_folder = QtWidgets.QPushButton(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -182,10 +190,10 @@ class UiFirstWindow(object):
             self.add_folder.sizePolicy().hasHeightForWidth())
         self.add_folder.setSizePolicy(sizePolicy)
         self.add_folder.setObjectName("add_folder")
-        self.horizontalLayout.addWidget(self.add_folder)
-        self.horizontalLayout.setStretch(0, 10)
+        self.subfolder_layout_h.addWidget(self.add_folder)
+        self.subfolder_layout_h.setStretch(0, 10)
         self.master_layout.setLayout(
-            4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+            5, QtWidgets.QFormLayout.FieldRole, self.subfolder_layout_h)
         self.folder_list = QtWidgets.QListWidget(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -196,11 +204,11 @@ class UiFirstWindow(object):
         self.folder_list.setSizePolicy(sizePolicy)
         self.folder_list.setObjectName("folder_list")
         self.master_layout.setWidget(
-            5, QtWidgets.QFormLayout.FieldRole, self.folder_list)
+            6, QtWidgets.QFormLayout.FieldRole, self.folder_list)
         spacerItem1 = QtWidgets.QSpacerItem(
             20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.master_layout.setItem(
-            6, QtWidgets.QFormLayout.FieldRole, spacerItem1)
+            7, QtWidgets.QFormLayout.FieldRole, spacerItem1)
         self.proceed = QtWidgets.QPushButton(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -211,7 +219,22 @@ class UiFirstWindow(object):
         self.proceed.setSizePolicy(sizePolicy)
         self.proceed.setObjectName("proceed")
         self.master_layout.setWidget(
-            7, QtWidgets.QFormLayout.FieldRole, self.proceed)
+            8, QtWidgets.QFormLayout.FieldRole, self.proceed)
+        self.process_folder_layout_v = QtWidgets.QVBoxLayout()
+        self.process_folder_layout_v.setObjectName("process_folder_layout_v")
+        self.folder_path_label = QtWidgets.QLabel(self.formLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.folder_path_label.sizePolicy().hasHeightForWidth())
+        self.folder_path_label.setSizePolicy(sizePolicy)
+        self.folder_path_label.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.folder_path_label.setTextFormat(QtCore.Qt.AutoText)
+        self.folder_path_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.folder_path_label.setObjectName("folder_path_label")
+        self.process_folder_layout_v.addWidget(self.folder_path_label)
         self.open_folder = QtWidgets.QPushButton(self.formLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -221,12 +244,13 @@ class UiFirstWindow(object):
             self.open_folder.sizePolicy().hasHeightForWidth())
         self.open_folder.setSizePolicy(sizePolicy)
         self.open_folder.setObjectName("open_folder")
-        self.master_layout.setWidget(
-            0, QtWidgets.QFormLayout.FieldRole, self.open_folder)
+        self.process_folder_layout_v.addWidget(self.open_folder)
+        self.master_layout.setLayout(
+            1, QtWidgets.QFormLayout.FieldRole, self.process_folder_layout_v)
         spacerItem2 = QtWidgets.QSpacerItem(
             20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.master_layout.setItem(
-            1, QtWidgets.QFormLayout.FieldRole, spacerItem2)
+            2, QtWidgets.QFormLayout.FieldRole, spacerItem2)
         first_page.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(first_page)
         self.statusbar.setObjectName("statusbar")
@@ -259,6 +283,7 @@ class UiFirstWindow(object):
         self.proceed.setText(_translate("first_page", "Proceed"))
         self.open_folder.setText(_translate("first_page", "Open Folder"))
         self.open_folder.setShortcut(_translate("first_page", "Ctrl+O"))
+        self.folder_path_label.setText(_translate("first_page", "..."))
 
 
 class ImageCanvas(QtWidgets.QLabel):
@@ -429,7 +454,7 @@ class UiSecondWindow(object):
         font.setPointSize(12)
         self.current_page.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join("assets", "icon.png")),
+        icon.addPixmap(QtGui.QPixmap(resource_path("./assets/icon.png")),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.current_page.setWindowIcon(icon)
         sizePolicy = QtWidgets.QSizePolicy(
