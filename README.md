@@ -4,17 +4,17 @@ Image Sorter is a graphical image sorting and cropping tool.
 
 It is written in Python and uses Qt for it's graphical interface.
 
-![Screen 1](https://github.com/atharva-bhagwat/image-sorter/blob/main/readme_assets/1.png?raw=true)
+![Screen 1](https://github.com/atharva-bhagwat/image_sorter/blob/main/readme_assets/1.png?raw=true)
 
-![Screen 1 Filled](https://github.com/atharva-bhagwat/image-sorter/blob/main/readme_assets/2.png?raw=true)
+![Screen 1 Filled](https://github.com/atharva-bhagwat/image_sorter/blob/main/readme_assets/2.png?raw=true)
 
-![Screen 2](https://github.com/atharva-bhagwat/image-sorter/blob/main/readme_assets/3.png?raw=true)
+![Screen 2](https://github.com/atharva-bhagwat/image_sorter/blob/main/readme_assets/3.png?raw=true)
 
 ## Installation
 
 ### Ubuntu Linux
 
-- [Download](https://github.com/atharva-bhagwat/image-sorter/blob/main/installation_assets/imagesorter_1.0_amd64.deb) .deb file
+- [Download](https://github.com/atharva-bhagwat/image_sorter/blob/main/installation_assets/imagesorter_1.0_amd64.deb) .deb file
 - `sudo dpkg -i imagesorter_1.0_amd64.deb`
 
 You'll find *Image Sorter* in Applications
