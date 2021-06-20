@@ -21,18 +21,18 @@ You'll find *Image Sorter* in Applications
 
 ### Windows
 
-Coming Soon!
+*Coming Soon!*
 
 ### MacOS
 
-Coming Soon!
+*Coming Soon!*
 
 ## Usage
 
 ### Steps
 
 **Screen 1:**
-1. Install and launch using the [instruction above]()
+1. Install and launch using the [instruction above](https://github.com/atharva-bhagwat/image_sorter/blob/main/README.md#installation)
 2. Click 'Open Folder' to select folder to be processed
 3. Choose either 'Copy' or 'Cut' operation
 4. Add subfolders in which you wish to sort the data
@@ -44,19 +44,17 @@ Coming Soon!
 ### Hotkeys
 | Key | Description |
 |-----|-----|
-| *Screen 1* |
 | Ctrl+o | Open Folder on Screen 1 |
 | Enter | Add subfolder to the list of subfolders |
-| *Screen 2* |
 | ← → | Arrow key to move between images |
 | Number keys | To sort images in respective subfolder |
 
-*Note: Number keys are assigned according to the order in which they appear on Screen 2*
+*Note: Number keys are assigned according to the order in which the buttons appear on Screen 2*
 
 ## How to contribute
 Send a pull request
 
 # Notes & Credits
-- Target audience for this application are ML Engineers. I hope this makes sorting tons of images easier.
-- Found a bug? Have an improvement? Contribute [here]().
-- Icon made by [Freepik]("https://www.freepik.com") from [flaticon]("https://www.flaticon.com/")
+- Target audience for this application are ML Engineers. I hope this makes creating datasets easier.
+- Found a bug? Have an improvement? Contribute by sending a pull request.
+- Icon made by [Freepik](https://www.freepik.com) from [flaticon](https://www.flaticon.com)
