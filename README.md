@@ -19,11 +19,19 @@ You'll find *Image Sorter* in Applications
 
 ### Windows
 
-*Coming Soon!*
+1. Clone this repo
+2. Install PyQt5 and Pillow
+    1. `pip install PyQt5`
+    2. `pip install pillow`
+3. Run `python image_sorter.py`
 
 ### MacOS
 
-*Coming Soon!*
+1. Clone this repo
+2. Install PyQt5 and Pillow
+    1. `pip install PyQt5`
+    2. `pip install pillow`
+3. Run `python image_sorter.py`
 
 ## Usage
 
