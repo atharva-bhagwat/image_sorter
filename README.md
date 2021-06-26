@@ -66,8 +66,8 @@ Send a pull request
 ## ImageSorter: Notes for packaging
 
 ### Resources:
-[Creating executable](https://blog.aaronhktan.com/posts/2018/05/14/pyqt5-pyinstaller-executable)
-[Creating working directory and generating .deb](https://www.internalpointers.com/post/build-binary-deb-package-practical-guide)
+- [Creating executable](https://blog.aaronhktan.com/posts/2018/05/14/pyqt5-pyinstaller-executable)
+- [Creating working directory and generating .deb](https://www.internalpointers.com/post/build-binary-deb-package-practical-guide)
 
 # Notes & Credits
 - Target audience for this application are ML Engineers. I hope this makes creating datasets easier.
